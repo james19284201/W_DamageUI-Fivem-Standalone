@@ -57,7 +57,7 @@ BASIC USAGE
 
 CONFIGURATION (IMPORTANT)
 ----------------------------------------
-Healing locations are defined at the TOP of the client file for easy editing.
+Healing locations are defined at the TOP of the client.lua
 
 Example:
 HealingSpots = {
