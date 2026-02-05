@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Damage UI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+  <div id="damage-hud" aria-hidden="true" style="display:none;">
+    <svg viewBox="0 0 120 260" role="img" aria-label="Damage indicator">
+      <circle id="head" class="part" cx="60" cy="22" r="12"/>
+
+      <rect id="torso" class="part" x="38" y="40" width="44" height="72" rx="12"/>
+
+      <rect id="leftArm" class="part" x="18" y="42" width="16" height="62" rx="8"/>
+      <rect id="rightArm" class="part" x="86" y="42" width="16" height="62" rx="8"/>
+
+      <rect id="leftLeg" class="part" x="44" y="116" width="14" height="82" rx="7"/>
+      <rect id="rightLeg" class="part" x="62" y="116" width="14" height="82" rx="7"/>
+    </svg>
+  </div>
+
+  <div id="heal-container">
+    <div id="heal-text">Receiving Medical Treatment...</div>
+
+    <div id="heal-bar">
+      <div id="heal-fill"></div>
+    </div>
+
+    <div id="heal-percent">0%</div>
+  </div>
+
+<div id="medical-menu">
+     <div id="medical-progress">
+  <div id="medical-progress-fill"></div>
+</div>
+  <div class="medical-title">Medical Treatment</div>
+  
+  <div class="medical-grid">
+    <button data-part="head">Head</button>
+    <button data-part="torso">Torso</button>
+    <button data-part="leftArm">Left Arm</button>
+    <button data-part="rightArm">Right Arm</button>
+    <button data-part="leftLeg">Left Leg</button>
+    <button data-part="rightLeg">Right Leg</button>
+  </div>
+
+  <button class="medical-close">Cancel</button>
+</div>
+<div id="medical-progress" style="display:none;">
+  <div id="medical-progress-fill"></div>
+</div>
+
+  <div id="config" role="dialog" aria-label="Damage UI Settings">
+    <div class="config-title">Damage UI Settings</div>
+
+    <div class="config-row">
+      <span>Left / Right</span>
+      <div class="btns">
+        <button class="btn" onclick="move('x', -0.01)">-</button>
+        <button class="btn" onclick="move('x',  0.01)">+</button>
+      </div>
+    </div>
+
+    <div class="config-row">
+      <span>Up / Down</span>
+      <div class="btns">
+        <button class="btn" onclick="move('y', -0.01)">-</button>
+        <button class="btn" onclick="move('y',  0.01)">+</button>
+      </div>
+    </div>
+
+    <div class="config-row">
+  <span>Display Mode</span>
+  <select id="displayMode" onchange="setDisplayMode(this.value)">
+    <option value="always">Always Display</option>
+    <option value="injured">Only When Injured</option>
+  </select>
+</div>
+
+    <div class="config-row">
+      <span>Injury Color</span>
+      <div class="color-picker">
+  <div class="color-preview" id="colorPreview"></div>
+
+  <div class="color-sliders">
+    <div class="slider-row">
+      <label>R</label>
+      <input type="range" min="0" max="255" id="rSlider">
+      <span id="rVal">255</span>
+    </div>
+
+    <div class="slider-row">
+      <label>G</label>
+      <input type="range" min="0" max="255" id="gSlider">
+      <span id="gVal">80</span>
+    </div>
+
+    <div class="slider-row">
+      <label>B</label>
+      <input type="range" min="0" max="255" id="bSlider">
+      <span id="bVal">80</span>
+    </div>
+  </div>
+</div>
+    </div>
+<div class="config-actions">
+  <button class="reset" onclick="resetDefaults()">Reset</button>
+  <button class="close" onclick="closeMenu()">Close</button>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
